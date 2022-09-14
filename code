@@ -1,0 +1,48 @@
+#Ashab Naveed 
+#Computing Science 10
+#Triangle Tesselation
+#Henry Wise Wood High School
+#2021-22 Semester 1
+#October 25th , 2021
+
+height = int(input("What is the height of the triangle:"))
+cols = int(input("How many columns are there:"))
+rows = int(input("How many rows are there:"))
+
+
+#defines j for later useage
+def j(num):
+    return num % 2 == 0
+
+#creates an empty string for the triangle
+triangle        = ""
+
+for i in range(rows): #for loop to create the correct number of rows
+    space      = height - 1
+    stars           = 1
+
+    for k in range(height): #for loop to create the correct height
+        if(j(i)):
+            for column in range(cols): #loop to create the correct number of columns
+                triangle += " " * (space + 1) + "*" * stars + " " * space # formats the triangle with stars and spaces
+        else:
+            for column in range(cols + 1): #creates another loop to make the side triangles
+                if(not(column == 0)):
+                    triangle += " " * (space + 1)
+
+                if(column == 0 or column >= cols):
+                    if(column >= cols):
+                        k += 1
+                    triangle += "*" * (stars - k)
+                else:
+                    triangle += "*" * stars
+
+                if(column < cols):
+                    triangle += " " * space
+
+        space      -= 1
+        stars           += 2
+        triangle        += "\n" #formatting
+
+#prints out the triangle
+print(triangle)
